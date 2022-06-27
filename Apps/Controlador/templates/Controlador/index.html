@@ -1,10 +1,185 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdminLTE 3 | Fixed Sidebar</title>
 
-{% extends 'Controlador/base.html'%}
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'Controlador/plugins/fontawesome-free/css/all.min.css'   %}">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="{% static 'Controlador/plugins/overlayScrollbars/css/OverlayScrollbars.min.css'   %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'Controlador/dist/css/adminlte.min.css'   %}">
 
-{% load static %}  
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+ 
+
+
+
+
+
+  <!-- Datatable-->
+  <link rel="stylesheet" type="text/css" href="{% static 'Controlador/data_tables/datatables.min.css' %}"/>
+
+  <!-- Iconos Bootstrap-->
+  <link rel="stylesheet" type="text/css" href="{% static 'Controlador/iconos_bootstrap/font/bootstrap-icons.css' %}"/>
+
+  <!-- Desactivar el step de los number fiedl-->
+  <link rel="stylesheet" type="text/css" href="{% static 'Controlador/mis_css/desactivar_step_numberfield.css' %}"/>
+
+  <!-- Sweet Alert -->
+  <link rel="stylesheet" href="{% static 'Controlador/plugins/sweetalert2/sweetalert2.min.css'   %}">
+
+  <!-- Jquery Confirm CSS Files -->
+  <link rel="stylesheet" href="{% static 'Controlador/plugins/Jquery-confirm/dist/jquery-confirm.min.css'%}">
+
   
+</head>
 
-{% block contentPrincipal%}
 
-<h1>Index</h1>
+<body class="layout-top-nav" style="height: auto;">
+
+    
+    <div class="wrapper">
+
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+          <div class="container">
+            
+
+           
+          </div>
+        </nav>
+        <!-- /.navbar -->
+      
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper" style="min-height: 267px;">
+          <!-- Content Header (Page header) -->
+          <div class="content-header">
+            <div class="container">
+              <div class="row mb-2 justify-content-md-center">
+                <div >
+                  <h1 class="m-0"> Mula <strong><small>Beta-Test</small></strong></h1>
+                </div><!-- /.col -->
+                
+              </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+          </div>
+          <!-- /.content-header -->
+      
+          <!-- Main content -->
+          <div class="content">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Que es Mula?</h5>
+      
+                      <p class="card-text">
+                        Mula, es una plataforma para las personas que se dedican a enviar cosas a Cuba (PUEDE SER CUALQUIER OTRO PAIS) para vender
+                      </p>
+      
+                    
+                    </div>
+                  </div>
+      
+                  <div class="card card-primary card-outline">
+                    <div class="card-body">
+                      <h5 class="card-title">Que puede hacer Mula?</h5>
+      
+                      <p class="card-text">
+                        En esta plataforma pueden:
+                      </p>
+                      
+                      <ul>
+                        <li> LLevar el registro de envios que realice</li>
+                        <li> En caso de tener Mulas que trabajen para usted, pueden llevar el registro de ellas</li>
+                        <li> LLevar la contabilidad de su capital (Inversion y Ganancia) de cada viaje </li>
+                        <li> Brindarle una mayor organizacion y profesionalidad en su trabajo</li>
+                      </ul>
+                    </div>
+                  </div><!-- /.card -->
+                </div>
+                <!-- /.col-md-6 -->
+                <div class="col-lg-6">
+                  <div class="card">
+                    <div class="card-header">
+                      <h5 class="card-title m-0">Login</h5>
+                    </div>
+                    <div class="card-body">
+                      <h6 class="card-title">Ya tienes cuenta?</h6>
+      
+                      <p class="card-text"></p>
+                      <a href="{% url 'auth_login'%}" class="btn btn-primary">Login</a>
+                    </div>
+                  </div>
+      
+                  <div class="card card-primary card-outline">
+                    <div class="card-header">
+                      <h5 class="card-title m-0">Register</h5>
+                    </div>
+                    <div class="card-body">
+                      <h6 class="card-title">Crear una cuenta nueva</h6>
+      
+                      <p class="card-text"></p>
+                      <a href="{% url 'registration_register'%}" class="btn btn-primary">Register</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- /.col-md-6 -->
+              </div>
+              <!-- /.row -->
+            </div><!-- /.container-fluid -->
+          </div>
+          <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+      
+       
+      
+        <!-- Main Footer -->
+        <footer class="main-footer">
+          <!-- To the right -->
+          <div class="float-right d-none d-sm-inline">
+          
+          </div>
+          <!-- Default to the left -->
+          
+        </footer>
+      </div>
+
+<!-- jQuery -->
+<script src="{% static 'Controlador/plugins/jquery/jquery.min.js'   %}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static 'Controlador/plugins/bootstrap/js/bootstrap.bundle.min.js'   %}"></script>
+<!-- overlayScrollbars -->
+<script src="{% static 'Controlador/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js'   %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'Controlador/dist/js/adminlte.min.js'   %}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{% static 'Controlador/dist/js/demo.js'   %}"></script>
+<!-- Datatable-->
+<script type="text/javascript" src="{% static 'Controlador/data_tables/datatables.min.js' %}"></script>
+<!-- Sweet Alert -->
+<script type="text/javascript" src="{% static 'Controlador/plugins/sweetalert2/sweetalert2.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'Controlador/plugins/sweetalert_Mio/sweetaler2.js' %}"></script>
+<!-- Jquery Confirm JS Files -->
+<script src="{% static 'Controlador/plugins/Jquery-confirm/dist/jquery-confirm.min.js'%}"></script>
+
+
+<!-- Mi Funcion Ajax -->
+<script src="{% static 'Controlador/mis_js/ajax.js'%}"></script>
+
+
+{% block js_personalizado%}
+
 {% endblock %}
+
+</body>
+</html>

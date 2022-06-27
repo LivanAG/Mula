@@ -5929,4 +5929,4 @@
     Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
-//# sourceMappingURL=svg2pdf.umd.js.map
+//# 

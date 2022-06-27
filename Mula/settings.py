@@ -24,10 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-0s1cp3-xg-_l#@&&g_9tz(r7wfrpjkvud5@d91boyg^yjhp687'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
 
+ALLOWED_HOSTS = ['https://mula-app.herokuapp.com/',
+'localhost',
+'127.0.0.1']
 
 # Application definition
 
@@ -146,6 +148,9 @@ EMAIL_HOST_PASSWORD="ndguxakhuczxbnvp"
 #Django Registration
 
 ACCOUNT_ACTIVATION_DAYS = 7
+
+
+
 
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
