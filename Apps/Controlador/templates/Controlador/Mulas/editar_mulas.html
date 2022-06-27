@@ -1,0 +1,70 @@
+
+{% extends 'Controlador/base.html'%}
+
+{% load static %}  
+  
+
+{% block contentPrincipal%}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+       
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+ <!-- Main content -->
+ <section class="content">
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <!-- Default box -->
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Editar Mula</h3>
+            </div>
+            <div class="card-body" style="display: block;">
+              
+              <form method="post" id="form">
+              {% csrf_token %}
+        
+                {{form.as_p}}
+                 
+                
+                <div class="row" id="botones_de_opciones" style="justify-content: center;">
+                    <input type="submit" rel="enviar" class="btn btn-primary mr-5" style="width: 120px;">
+                    <a href="{{url_ok}}" rel="volver" class="btn btn-dark" style="width: 120px;">Volver</a>
+                </div>
+                
+                  
+              </form>
+        
+        
+        
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /.content -->
+ 
+  
+{% endblock %}
+
+
+
+{% block js_personalizado%}
+
+
+<script> var url_ok= '{{url_ok}}';</script>
+<script> var token= '{{token}}';</script>
+<!-- Mi Funcion Ajax -->
+<script src="{% static 'Controlador/mis_js/editar_mula_ajax.js'%}"></script>
+
+{% endblock %}

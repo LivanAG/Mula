@@ -1,0 +1,4 @@
+Luego tengo que hacer la parte del index con toda la data genera y los graficos,etc
+
+
+Me quede cambiando las plantillas del registration 

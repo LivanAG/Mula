@@ -1,0 +1,154 @@
+
+{% extends 'Controlador/base.html'%}
+
+{% load static %}  
+  
+
+{% block contentPrincipal%}
+
+<div class="container p-5">
+
+    <div class="row">
+
+        
+          
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3>{{cant_envios}}</h3>
+    
+              <p>Envios</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-bag"></i>
+            </div>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div class="small-box bg-warning">
+            <div class="inner">
+              <h3>{{cant_mulas}}</h3>
+              
+    
+              <p>Mulas</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-person"></i>
+            </div>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div class="small-box bg-success">
+            <div class="inner">
+              <h3>{{cant_ganancia}}</h3>
+    
+              <p>Ganancia Total</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-cash"></i>
+            </div>
+            
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div class="small-box bg-danger">
+            <div class="inner">
+              <h3>{{cant_invertida}}</h3>
+    
+              <p>Inversion Total</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-pie-graph"></i>
+            </div>
+          </div>
+        </div>
+        <!-- ./col -->
+      </div>
+     
+    <div class="row justify-content-md-center mt-5">
+        <div id="container" style="width: 800px;height: 400px"></div>
+    </div>  
+    
+    
+</div>
+
+
+
+<script src="{% static 'Controlador/plugins/HighCharts/highcharts.js' %}"></script>
+<script src="{% static 'Controlador/plugins/HighCharts/modules/exporting.js' %}"></script>
+<script src="{% static 'Controlador/plugins/HighCharts/modules/export-data.js' %}"></script>
+<script src="{% static 'Controlador/plugins/HighCharts/modules/accessibility.js' %}"></script>
+
+<script>
+    
+    //var myJSON= '{{x}}';
+    var datos= JSON.parse("{{x}}");
+
+
+
+   
+    
+
+    Highcharts.chart('container', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Reporte de Ganancias del año 2022'
+    },
+    subtitle: {
+        text: 'Ganancias Total de Cada Mes'
+    },
+    xAxis: {
+        categories: [
+            'Jan',
+            'Feb',
+            'Mar',
+            'Apr',
+            'May',
+            'Jun',
+            'Jul',
+            'Aug',
+            'Sep',
+            'Oct',
+            'Nov',
+            'Dec'
+        ],
+        crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Ganancia en Dolares'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f} $</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [{
+        name: 'Ganancia',
+        showInLegend: false,
+        data:  datos
+
+    },]
+});
+</script>
+{% endblock %}

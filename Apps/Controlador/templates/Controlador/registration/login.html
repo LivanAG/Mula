@@ -1,0 +1,121 @@
+{% extends "registration/registration_base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Log in" %}{% endblock %}
+
+{% block content %}
+
+
+<div class="hold-transition login-page">
+<div class="login-box">
+    <div class="login-logo">
+      <a href="../../index2.html"><b>Admin</b>LTE</a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="card">
+      <div class="card-body login-card-body">
+        <p class="login-box-msg">Sign in to start your session</p>
+  
+        <form method="post" action="">
+            {% csrf_token %}
+          <div class="input-group mb-3">
+            <input type="text" name="username" autofocus="" class="form-control" placeholder="Username" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-envelope"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" placeholder="Password" name="password" autocomplete="current-password" required="" id="id_password">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-8">
+              <div class="icheck-primary">
+                <input type="checkbox" id="remember">
+                <label for="remember">
+                  Remember Me
+                </label>
+              </div>
+            </div>
+            <!-- /.col -->
+            <div class="col-4">
+              
+              <input type="submit" class="btn btn-primary btn-block" value="{% trans 'Sign in' %}" />
+              <input type="hidden" name="next" value="{% url 'Controlador:dashboard' %}" />
+            </div>
+            <!-- /.col -->
+          </div>
+        </form>
+  
+        
+        <!-- /.social-auth-links -->
+  
+        <p class="mb-1">
+            {% trans "Forgot your password?" %} <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>
+        </p>
+        <p class="mb-0">
+            
+            {% trans "Not a member?" %} <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>
+        </p>
+      </div>
+      <!-- /.login-card-body -->
+      
+    </div>
+    <div class="form-row  mt-5">
+      {% if form.errors %}
+      {% for field in form %}
+          {% for error in field.errors %}
+              <div class="alert alert-danger">
+              <strong>{{ error|escape }}</strong>
+              </div>
+
+
+          {% endfor %}
+      {% endfor %}
+      {% for error in form.non_field_errors %}
+          <div class="alert alert-danger">
+              <strong>{{ error|escape }}</strong>
+          </div>
+      {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+  <!-- /.login-box -->
+
+</div>
+{% endblock %}
+
+
+{% comment %}
+**registration/login.html**
+
+It's your responsibility to provide the login form in a template called
+registration/login.html by default. This template gets passed four
+template context variables:
+
+``form``
+    A Form object representing the login form. See the forms
+    documentation for more on Form objects.
+
+``next``
+    The URL to redirect to after successful login. This may contain a
+    query string, too.
+
+``site``
+    The current Site, according to the SITE_ID setting. If you don't
+    have the site framework installed, this will be set to an instance
+    of RequestSite, which derives the site name and domain from the
+    current HttpRequest.
+
+``site_name``
+    An alias for site.name. If you don't have the site framework
+    installed, this will be set to the value of
+    request.META['SERVER_NAME']. For more on sites, see The
+    "sites" framework.
+{% endcomment %}

@@ -1,0 +1,116 @@
+
+{% extends 'Controlador/base.html'%}
+
+{% load static %}  
+  
+
+{% block contentPrincipal%}
+
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+      
+    </div><!-- /.container-fluid -->
+  </section>
+
+
+
+
+  
+    <div class="card ml-4 mr-4 p-4">
+
+
+        <div class="card-header mb-3" id="card_header"> 
+            <h3 class="card-title" style="font-weight: bold;">Listado de Objetos </h3>
+
+
+            <div class="row" style="float: right;">
+
+              <button type="button" id="crear_objeto" class="btn btn-success mr-3">Agregar Objeto</button>
+
+              <input type="button" class="btn btn-danger" rel='boton_eliminar'  id="contador" placeholder="Company" value="Eliminar">
+            </div>
+            
+
+        </div>
+
+        <table id="listado_de_Objetos" class="hover cell-border" style="width:100%">
+
+            <thead>
+
+                <tr>
+                    <th scope="col" style="width: 1%; "><input rel='seleccionar_todo' id="selec_all"  type='checkbox'/></th>
+                    <th scope="col" style="width: 30%; ">Nombre</th>
+                    <th scope="col" style="width: 30%; ">Precio de Compra</th>
+                    <th scope="col" style="width: 30%; ">Precio de venta</th>
+                </tr>
+            </thead>
+
+        </table>
+        <spam id="contador_de_objetos">Objetos Seleccionadas: 0</spam>
+        
+
+
+    </div>
+
+
+
+<!-- CrearObjetoModal -->
+<div class="modal fade" id="CrearObjetoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Crear Objeto</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="card card-primary card-outline">
+              <div class="card-body box-profile">
+              
+            
+                <form method="post" id="form">
+                    {% csrf_token %}
+              
+                      {{form.as_p}}
+                       
+                      
+                        <input type="submit"  class="btn btn-primary mr-5" style="width: 120px; float: right;">
+                        
+                    </form>
+                
+
+            
+              </div>
+              <!-- /.card-body -->
+              
+            </div>
+            
+          </div>
+          
+        </div>
+     
+      </div>
+    </div>
+</div>
+
+<!--Parrafo Error -->
+<div class="form-group my-5 p-0">
+
+  <p style="display: none;" id="parrafoError" class="alert alert-danger m-5"></p>   
+
+</div>
+    
+{% endblock %}
+
+
+
+{% block js_personalizado%}
+
+<!-- Mi Funcion Ajax -->
+<script src="{% static 'Controlador/mis_js/lista_objetos_ajax.js'%}"></script>
+
+{% endblock %}

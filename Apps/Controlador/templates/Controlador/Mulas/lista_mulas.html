@@ -1,0 +1,126 @@
+
+{% extends 'Controlador/base.html'%}
+
+{% load static %}  
+  
+
+{% block contentPrincipal%}
+
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+      
+    </div><!-- /.container-fluid -->
+  </section>
+
+
+
+
+
+  
+    <div class="card ml-4 mr-4 p-4">
+
+
+        <div class="card-header mb-3" id="card_header"> 
+            <h3 class="card-title" style="font-weight: bold;">Listado de Mulas </h3>
+
+
+            <div class="row" style="float: right;">
+
+              <button id="crear_mula" type="button" class="btn btn-success mr-3">Agregar Mula</button>
+
+              <input type="button" class="btn btn-danger" rel='boton_eliminar'  id="contador" placeholder="Company" value="Eliminar">
+            </div>
+            
+
+        </div>
+
+        <table id="listado_de_mulas" class="hover cell-border" style="width:100%">
+
+            <thead>
+
+                <tr>
+                    <th scope="col" style="width: 1%; "><input rel='seleccionar_todo'  id="selec_all" type='checkbox'/></th>
+                    <th scope="col" style="width: 50%; ">Nombre</th>
+                    <th scope="col" style="width: 29%; ">Telefono</th>
+                    <th scope="col" style="width: 5%; ">Viajes</th>
+                    <th scope="col" style="width: 15%; ">Detalles</th>
+                </tr>
+            </thead>
+
+        </table>
+        <spam id="contador_de_mulas">Mulas Seleccionadas: 0</spam>
+        
+
+
+    </div>
+
+
+    
+
+    <!-- CrearMulaModal -->
+<div class="modal fade" id="CrearMulaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Crear Mula</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="card card-primary card-outline">
+              <div class="card-body box-profile">
+              
+            
+                <form method="post" id="form">
+                    {% csrf_token %}
+              
+                      {{form.as_p}}
+                       
+                      
+                        <input type="submit"  class="btn btn-primary mr-5" style="width: 120px; float: right;">
+                        
+                    </form>
+                
+
+            
+              </div>
+              <!-- /.card-body -->
+              
+            </div>
+            
+          </div>
+          
+        </div>
+     
+      </div>
+    </div>
+</div>
+
+<!--Parrafo Error -->
+<div class="form-group my-5 p-0">
+
+  <p style="display: none;" id="parrafoError" class="alert alert-danger m-5"></p>   
+
+</div>
+    
+{% endblock %}
+
+
+
+
+{% block js_personalizado%}
+
+
+
+
+
+
+<script> var url_ok= '{{url_ok}}';</script>
+<!-- Mi Funcion Ajax -->
+<script src="{% static 'Controlador/mis_js/lista_mulas_ajax.js'%}"></script>
+
+{% endblock %}

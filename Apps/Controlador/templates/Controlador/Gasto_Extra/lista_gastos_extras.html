@@ -1,0 +1,164 @@
+
+{% extends 'Controlador/base.html'%}
+
+{% load static %}  
+  
+
+{% block contentPrincipal%}
+
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+      
+    </div><!-- /.container-fluid -->
+  </section>
+
+
+
+
+  
+    <div class="card ml-4 mr-4 p-4">
+
+
+        <div class="card-header mb-3" id="card_header"> 
+            <h3 class="card-title" style="font-weight: bold;">Listado de Gastos Extras </h3>
+
+
+            <div class="row" style="float: right;">
+
+              <button type="button" id="crear_objeto" class="btn btn-success mr-3">Agregar Gasto Extra</button>
+
+              <input type="button" class="btn btn-danger" rel='boton_eliminar'  id="contador" placeholder="Company" value="Eliminar">
+            </div>
+            
+
+        </div>
+
+        <table id="listado_de_gastos_extras" class="hover cell-border" style="width:100%">
+
+            <thead>
+
+                <tr>
+                    <th scope="col" style="width: 1%; "><input rel='seleccionar_todo' id="selec_all"  type='checkbox'/></th>
+                    <th scope="col" style="width: 30%; ">Nombre</th>
+                    <th scope="col" style="width: 30%; ">Cantidad de dinero</th>
+                    <th scope="col" style="width: 30%; ">Detalles</th>
+                </tr>
+            </thead>
+
+        </table>
+        <spam id="contador_de_gastos">Gastos Seleccionadas: 0</spam>
+        
+
+
+    </div>
+
+
+
+<!-- CrearGastoModal -->
+<div class="modal fade" id="CrearGastoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Crear Gasto</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="card card-primary card-outline">
+              <div class="card-body box-profile">
+              
+            
+                <form method="post" id="form">
+                    {% csrf_token %}
+              
+                      {{form.as_p}}
+                       
+                      
+                        <input type="submit"  class="btn btn-primary mr-5" style="width: 120px; float: right;">
+                        
+                    </form>
+                
+
+            
+              </div>
+              <!-- /.card-body -->
+              
+            </div>
+            
+          </div>
+          
+        </div>
+     
+      </div>
+    </div>
+</div>
+
+
+<!-- InfoGastoExtraModal -->
+<div class="modal fade" id="InfoGastoExtraModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Gasto Extra</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="card card-primary card-outline">
+              <div class="card-body box-profile">
+              
+            
+                <h3 class="profile-username text-center nombre"></h3>
+            
+             
+                <ul class="list-group list-group-unbordered mb-3">
+                  
+                  <li class="list-group-item">
+                    <b>Cantidad de Dinero:</b> <a class="float-right cant_dinero"></a>
+                  </li>
+  
+                  <li class="list-group-item">
+                    <b>Notas:</b>
+                    <textarea cols="40" rows="10" maxlength="99999" class="form-control" readonly id="notas_modal"><a class="float-right cant_dinero"></a></textarea>
+                  </li>
+                </ul>
+            
+              </div>
+              <!-- /.card-body -->
+              
+            </div>
+            
+          </div>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Ok</button>
+       
+        </div>
+      </div>
+    </div>
+</div>
+
+<!--Parrafo Error -->
+<div class="form-group my-5 p-0">
+
+    <p style="display: none;" id="parrafoError" class="alert alert-danger m-5"></p>   
+
+</div>
+    
+{% endblock %}
+
+
+
+{% block js_personalizado%}
+
+<!-- Mi Funcion Ajax -->
+<script src="{% static 'Controlador/mis_js/lista_gastos_extras_ajax.js'%}"></script>
+
+{% endblock %}

@@ -1,0 +1,201 @@
+{% extends 'Controlador/base.html'%}
+
+{% load static %}  
+  
+
+{% block contentPrincipal%}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    
+  </section>
+
+
+ <div class="card card-primary m-5">
+
+  <div class="card-header">
+    <h3 class="card-title">Detalles de Envio</h3>
+  </div>
+
+  <!-- /.card-header -->
+  <div class="card-body">
+    <strong><i class="fas fa-book mr-1"></i> Nombre:</strong>
+
+    <p class="text-muted ml-4">
+      {{envio.Nombre}}
+    </p>
+
+    <hr>
+
+
+    <!-- INVENTARIO -->
+    <strong><i class="fas fa-pencil-alt mr-1"></i> Inventario:</strong>
+
+    <div class="form-group mt-4" id="packs">
+       
+        <table id="listado_de_objetos" class="hover cell-border" style="width:100%">
+
+            <thead>
+
+                <tr>
+                    <th scope="col" style="width: 35%; ">Nombre</th>
+                    <th scope="col" style="width: 25%; ">Precio de Compra</th>
+                    <th scope="col" style="width: 25%; ">Precio de venta</th>
+                    <th scope="col" style="width: 14%; ">Cantidad</th>
+                </tr>
+            </thead>
+
+        </table>
+        
+       
+    </div>
+
+    <hr>
+
+
+    <!-- GASTOS EXTRAS -->
+    <strong><i class="fas fa-pencil-alt mr-1"></i> Gastos Extras:</strong>
+
+    <div class="form-group mt-4" id="gasto_extra">
+        
+
+        <table id="gastos_extras" class="hover cell-border" style="width:100%">
+
+            <thead>
+
+                <tr>
+                    <th scope="col" style="width: 35%; ">Nombre</th>
+                    <th scope="col" style="width: 25%; ">Cantidad</th>
+                    <th scope="col" style="width: 25%; ">Detalles</th>
+                </tr>
+            </thead>
+
+        </table>
+       
+
+    </div>
+
+    <hr>
+
+    <strong><i class="fas fa-map-marker-alt mr-1"></i> Fecha:</strong>
+
+    <p class="text-muted ml-4">{{envio.Fecha}}</p>
+
+    <hr>
+
+    <strong><i class="fas fa-map-marker-alt mr-1"></i> Dinero Invertido:</strong>
+
+    <p class="text-muted ml-4">{{envio.Dinero_Total_Invertido}}</p>
+
+    <hr>
+
+    <strong><i class="fas fa-pencil-alt mr-1"></i> Dinero Total Obtenido:</strong>
+
+    <p class="text-muted ml-4">{{envio.Dinero_Total_obtenido}}
+    </p>
+
+    <hr>
+
+    <strong><i class="fas fa-pencil-alt mr-1"></i> Ganancia:</strong>
+
+    <p class="text-muted ml-4">{{envio.Ganancia}}
+    </p>
+
+    <hr>
+
+    <strong><i class="fas fa-pencil-alt mr-1"></i> Mula:</strong>
+
+    <p class="text-muted ml-4">{{envio.Mula}}
+    </p>
+
+    <hr>
+
+    <strong><i class="fas fa-pencil-alt mr-1"></i> Notas:</strong>
+
+    <p class="text-muted ml-4">{{envio.notas}}
+    </p>
+
+    <hr>
+
+
+    
+
+    
+
+    
+
+
+
+
+    
+
+    <strong><i class="far fa-file-alt mr-1"></i> Opciones:</strong>
+
+    <div class="row mt-3 mr-5" style="justify-content: center;" id="botones_de_opciones">
+
+      <button type="button" rel='editar_envio' class="btn btn-primary mr-5" style="width: 120px;">Editar</button>
+      <button type="button" rel='eliminar_envio'class="btn  btn-danger mr-5" style="width: 120px;">Eliminar</button>
+      <a href="{{url_ok}}" rel="volver" class="btn btn-dark" style="width: 120px;">Volver</a>
+    </div>
+    
+    
+  </div>
+  <!-- /.card-body -->
+</div>
+
+<!-- InfoGastoExtraModal -->
+<div class="modal fade" id="InfoGastoExtraModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Gasto Extra</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="card card-primary card-outline">
+            <div class="card-body box-profile">
+            
+          
+              <h3 class="profile-username text-center nombre"></h3>
+          
+           
+              <ul class="list-group list-group-unbordered mb-3">
+                
+                <li class="list-group-item">
+                  <b>Cantidad de Dinero:</b> <a class="float-right cant_dinero"></a>
+                </li>
+
+                <li class="list-group-item">
+                  <b>Notas:</b>
+                  <textarea cols="40" rows="10" maxlength="99999" class="form-control" readonly id="notas_modal"><a class="float-right cant_dinero"></a></textarea>
+                </li>
+              </ul>
+          
+            </div>
+            <!-- /.card-body -->
+            
+          </div>
+          
+        </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Ok</button>
+     
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block js_personalizado%}
+
+<script> var url_ok= '{{url_ok}}';</script>
+<script> var token= '{{envio.pk}}';</script>
+<!-- Mi Funcion Ajax -->
+<script src="{% static 'Controlador/mis_js/detail_envio_ajax.js'%}"></script>
+
+{% endblock %}

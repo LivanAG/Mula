@@ -1,0 +1,78 @@
+
+{% extends 'Controlador/base.html'%}
+
+{% load static %}  
+  
+
+{% block contentPrincipal%}
+
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+      
+    </div><!-- /.container-fluid -->
+  </section>
+
+
+
+
+
+  
+    <div class="card ml-4 mr-4 p-4">
+
+
+        <div class="card-header mb-3" id="card_header"> 
+            <h3 class="card-title" style="font-weight: bold;">Listado de Envios </h3>
+
+
+            <div class="row" style="float: right;">
+
+              <a href="{% url 'Controlador:crear_envio'%}" type="button" class="btn btn-success mr-3">Agregar Envio</a>
+
+              <input type="button" class="btn btn-danger" rel='boton_eliminar'  id="contador" placeholder="Company" value="Eliminar">
+            </div>
+            
+
+        </div>
+
+        <table id="listado_de_envios" class="hover cell-border" style="width:100%">
+
+            <thead>
+
+                <tr>
+                    <th scope="col" style="width: 1%; "><input rel='seleccionar_todo'  type='checkbox'/></th>
+                    <th scope="col" style="width: 20%; ">Nombre</th>
+                    <th scope="col" style="width: 20%; ">Cantidad Invertida</th>
+                    <th scope="col" style="width: 20%; ">Cantidad Obtenida</th>
+                    <th scope="col" style="width: 19%; ">Ganancia</th>
+                    <th scope="col" style="width: 19%; ">Detalles</th>
+                </tr>
+            </thead>
+
+        </table>
+        <spam id="contador_de_envios">Envios Seleccionados: 0</spam>
+        
+
+
+    </div>
+
+
+    
+{% endblock %}
+
+
+
+
+{% block js_personalizado%}
+
+
+
+
+
+
+<script> var url_ok= '{{url_ok}}';</script>
+<!-- Mi Funcion Ajax -->
+<script src="{% static 'Controlador/mis_js/lista_envios_ajax.js'%}"></script>
+
+{% endblock %}

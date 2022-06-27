@@ -1,0 +1,243 @@
+{% extends 'Controlador/base.html'%}
+
+{% load static %}  
+  
+
+{% block contentPrincipal%}
+<style>
+
+  
+  .inventario_listo{
+    color: white !important;
+    background-color: darkslategray !important;
+  }
+
+  .inventario_listo input{
+    pointer-events: none;
+  } 
+
+
+
+  
+  
+  
+  </style>
+
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+       
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+ <!-- Main content -->
+ <section class="content">
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <!-- Default box -->
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Crear Envio</h3>
+            </div>
+            <div class="card-body" style="display: block;">
+              
+                <form method="post" id="form">
+                    {% csrf_token %}
+              
+                    
+                      
+                       
+                    <div class="form-group">
+                        <span>Nombre:</span>
+                        {{form.Nombre}}
+                    </div>
+            
+                     <!-- TABLA ENVIOS-->
+                    <div class="form-group mt-4" id="packs">
+                        <label>Inventario</label>
+                        <table id="listado_de_objetos" class="hover cell-border" style="width:100%">
+
+                            <thead>
+                
+                                <tr>
+                                    <th scope="col" style="width: 1%; "><input rel='seleccionar_todo' id="selc_todo_invent" type='checkbox'/></th>
+                                    <th scope="col" style="width: 35%; ">Nombre</th>
+                                    <th scope="col" style="width: 25%; ">Precio de Compra</th>
+                                    <th scope="col" style="width: 25%; ">Precio de venta</th>
+                                    <th scope="col" style="width: 14%; ">Cantidad</th>
+                                </tr>
+                            </thead>
+                
+                        </table>
+                        <spam id="contador_de_objetos">Objetos Seleccionados: 0</spam>
+                        <button id="inventario_listo" class="btn btn-primary mr-5" style="width: 120px;">Listo!</button>
+                        <button id="inventario_incompleto" class="btn btn-danger mr-5" style="width: 120px;display:none">Volver</button>
+
+                        <div class="m-5">
+                          <p id="parrafo_error" class="alert alert-danger" style="display:none"> Hay un objeto seleccionado sin definir la cantidad, recuerda que esta tiene que ser mayor que 0 </p>
+                        </div>
+                    </div>
+
+                    <!-- TABLA GASTOS EXTRAS-->
+                    <div class="form-group mt-4" id="gasto_extra">
+                        
+
+                        <label>Gastos Extras</label>
+                        <table id="gastos_extras" class="hover cell-border" style="width:100%">
+
+                            <thead>
+                
+                                <tr>
+                                    <th scope="col" style="width: 1%; "><input rel='seleccionar_todo' id="selc_todo_gast_ext" type='checkbox'/></th>
+                                    <th scope="col" style="width: 35%; ">Nombre</th>
+                                    <th scope="col" style="width: 25%; ">Cantidad</th>
+                                    <th scope="col" style="width: 25%; ">Detalles</th>
+                                </tr>
+                            </thead>
+                
+                        </table>
+                        <spam id="contador_de_gastos">Gastos Seleccionados: 0</spam>
+                        <button id="gastos_extras_listo" class="btn btn-primary mr-5" style="width: 120px;">Listo!</button>
+                        <button id="gastos_extras_incompletos" class="btn btn-danger mr-5" style="width: 120px;display:none">Volver</button>
+
+                        <div class="m-5">
+                          <p id="parrafo_error" class="alert alert-danger" style="display:none"> Hay un objeto seleccionado sin definir la cantidad, recuerda que esta tiene que ser mayor que 0 </p>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                      <span>Fecha:</span>
+                      
+                      <input type="date" name="Fecha" placeholder="" autocomplete="off" class="form-control" id="id_Fecha">
+                      
+                    </div>
+
+                    <div class="form-group">
+                      <span> Gasto total en pasajes:</span>
+                      <input type="number" name="Gasto_total_en_pasajes" value="0" placeholder="" autocomplete="off" step="any" class="form-control" id="id_Gasto_total_en_pasajes">
+                    </div>
+
+
+                    <div class="form-group">
+                      <span> Dinero total Invertido:</span>
+                      <input type="number" name="Dinero_Total_Invertido" value="0" readonly placeholder="" autocomplete="off" step="any" class="form-control" id="id_Dinero_Total_Invertido"> 
+                    </div>
+
+
+                    <div class="form-group">
+                      <span> Dinero total Obtenido:</span>
+                      <input type="number" name="Dinero_Total_obtenido" readonly value="0" placeholder="" autocomplete="off" step="any" class="form-control" id="id_Dinero_Total_obtenido">
+                        
+                    </div>
+
+                    <div class="form-group">
+                      <span> Ganancia:</span>
+                      <input type="number" name="Ganancia" readonly value="622.0" placeholder="" autocomplete="off" step="any" class="form-control" id="id_Ganancia">
+                    </div>
+
+
+                    <div class="form-group">
+                      <p> Notas:</p>
+                        {{form.notas}}
+                    </div>
+
+                    <div class="form-group">
+                      <p> Mula:</p>
+                        {{form.Mula}}
+                    </div>
+
+                    <!--Parrafo Error -->
+                    <div class="form-group my-5 p-0">
+
+                        <p class="parrafoError m-5"></p>   
+
+                    </div>
+            
+            
+            
+                        <input type="submit"  class="btn btn-primary mr-5" style="width: 120px;">
+                        
+                       
+                      </form>
+        
+        
+        
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /.content -->
+ 
+  <!-- ======= Modals ======= -->
+
+ <!-- InfoGastoExtraModal -->
+<div class="modal fade" id="InfoGastoExtraModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Gasto Extra</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="card card-primary card-outline">
+            <div class="card-body box-profile">
+            
+          
+              <h3 class="profile-username text-center nombre"></h3>
+          
+           
+              <ul class="list-group list-group-unbordered mb-3">
+                
+                <li class="list-group-item">
+                  <b>Cantidad de Dinero:</b> <a class="float-right cant_dinero"></a>
+                </li>
+
+                <li class="list-group-item">
+                  <b>Notas:</b>
+                  <textarea cols="40" rows="10" maxlength="99999" class="form-control" readonly id="notas_modal"><a class="float-right cant_dinero"></a></textarea>
+                </li>
+              </ul>
+          
+            </div>
+            <!-- /.card-body -->
+            
+          </div>
+          
+        </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Ok</button>
+     
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
+
+
+{% block js_personalizado%}
+
+
+<script> var url_ok= '{{url_ok}}';</script>
+<script> var token= '{{token}}';</script>
+<!-- Mi Funcion Ajax -->
+<script src="{% static 'Controlador/mis_js/editar_envio_ajax.js'%}"></script>
+
+{% endblock %}

@@ -1,0 +1,74 @@
+
+{% extends 'Controlador/base.html'%}
+
+{% load static %}  
+  
+
+{% block contentPrincipal%}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    
+  </section>
+
+
+ <div class="card card-primary m-5">
+
+  <div class="card-header">
+    <h3 class="card-title">Detalles de Mula</h3>
+  </div>
+
+  <!-- /.card-header -->
+  <div class="card-body">
+    <strong><i class="fas fa-book mr-1"></i> Nombre:</strong>
+
+    <p class="text-muted ml-4">
+      {{mula.Nombre}}
+    </p>
+
+    <hr>
+
+    <strong><i class="fas fa-map-marker-alt mr-1"></i> Telefono:</strong>
+
+    <p class="text-muted ml-4">{{mula.Telefono}}</p>
+
+    <hr>
+
+    <strong><i class="fas fa-pencil-alt mr-1"></i> Cantidad de viajes dados:</strong>
+
+    <p class="text-muted ml-4">{{mula.CantidadDeEnviosRealizados}}
+    </p>
+
+    <hr>
+
+    <strong><i class="far fa-file-alt mr-1"></i> Opciones:</strong>
+
+    <div class="row mt-3 mr-5" style="justify-content: center;" id="botones_de_opciones">
+
+      <button type="button" rel='editar_mula' class="btn btn-primary mr-5" style="width: 120px;">Editar</button>
+      <button type="button" rel='eliminar_mula'class="btn  btn-danger mr-5" style="width: 120px;">Eliminar</button>
+      <a href="{{url_ok}}" rel="volver" class="btn btn-dark" style="width: 120px;">Volver</a>
+    </div>
+    
+    
+  </div>
+  <!-- /.card-body -->
+</div>
+
+
+<!--Parrafo Error -->
+<div class="form-group my-5 p-0">
+
+  <p style="display: none;" id="parrafoError" class="alert alert-danger m-5"></p>   
+
+</div>
+{% endblock %}
+
+{% block js_personalizado%}
+
+<script> var url_ok= '{{url_ok}}';</script>
+<script> var token= '{{mula.token}}';</script>
+<!-- Mi Funcion Ajax -->
+<script src="{% static 'Controlador/mis_js/detail_mula_ajax.js'%}"></script>
+
+{% endblock %}
