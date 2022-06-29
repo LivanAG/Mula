@@ -1,11 +1,3 @@
-from lib2to3.pgen2 import token
-from django.db.models.functions import Coalesce
-from operator import invert
-from re import template
-import re
-from site import ENABLE_USER_SITE
-from struct import pack
-from turtle import pen
 from django.views.generic import TemplateView,FormView,ListView,CreateView,DeleteView,DetailView
 from .models import *
 from .forms import *
