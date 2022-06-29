@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-0s1cp3-xg-_l#@&&g_9tz(r7wfrpjkvud5@d91boyg^yjhp687
 DEBUG = False
 
 
-ALLOWED_HOSTS = ['https://mula-app.herokuapp.com/',
+ALLOWED_HOSTS = ['https://mulax.herokuapp.com/',
 'localhost',
 '127.0.0.1']
 
