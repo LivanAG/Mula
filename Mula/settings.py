@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ['https://mula-app.herokuapp.com/',
 # Application definition
 
 INSTALLED_APPS = [
+    'registration',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Apps.Controlador',
-    'registration',
+    
     
 ]
 
