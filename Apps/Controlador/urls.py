@@ -5,8 +5,8 @@ from .views import *
 app_name = "Controlador"
 
 urlpatterns = [
-    path('', IndexdView.as_view(),name='index'),
-    path('Dashboard', DashboardView.as_view(),name='dashboard'),
+    
+    path('', DashboardView.as_view(),name='dashboard'),
 
     ##### Mulas #####
     path('Lista_Mulas', ListaMulaView.as_view(),name='lista_de_mulas'),

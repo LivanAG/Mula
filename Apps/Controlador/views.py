@@ -335,7 +335,7 @@ class DashboardView (TemplateView):
 ####### MULAS #######
 
 #Vista que muestra nuestra lista de mulas y las opciones correspondientes con estas
-class ListaMulaView (LoginRequiredMixin,ListView):
+class ListaMulaView (ListView):
     template_name= 'Controlador/Mulas/lista_mulas.html'  
     model = Mula
     context_object_name="lista_mulas"
@@ -412,7 +412,7 @@ class ListaMulaView (LoginRequiredMixin,ListView):
 
 
 #Vista para ver los detalles de una mula existente
-class DetailMula(LoginRequiredMixin,DetailView):
+class DetailMula(DetailView):
 
     model = Mula
     template_name = 'Controlador/Mulas/detail_mula.html'
@@ -464,7 +464,7 @@ class DetailMula(LoginRequiredMixin,DetailView):
 
 
 #Vista para editar datos de una mula existente
-class EditarMulaView (LoginRequiredMixin,FormView):
+class EditarMulaView (FormView):
     template_name= "Controlador/Mulas/editar_mulas.html"
     form_class=MulaForm
 
@@ -590,7 +590,7 @@ def DeleteObjetoFunction(data):
 
 
 #Vista que muestra nuestra lista de mulas y las opciones correspondientes con estas
-class ListaObjetosView (LoginRequiredMixin,ListView):
+class ListaObjetosView (ListView):
     template_name= 'Controlador/Objeto/lista_objetos.html'  
     model = Objeto
     context_object_name="lista_objetos"
@@ -725,7 +725,7 @@ def DeleteGastoFunction(data):
             return False
 
 
-class ListaGastosExtrasView (LoginRequiredMixin,ListView):
+class ListaGastosExtrasView (ListView):
     template_name= 'Controlador/Gasto_Extra/lista_gastos_extras.html'  
     model = Gasto_Extra
     context_object_name="lista_gastos_extras"
@@ -806,7 +806,7 @@ class ListaGastosExtrasView (LoginRequiredMixin,ListView):
 
 
 
-class CrearGastoExtraeView(LoginRequiredMixin,CreateView):
+class CrearGastoExtraeView(CreateView):
     model = Gasto_Extra
     fields = ['Nombre',"Cantidad_de_dinero",'notas']
     template_name= "Controlador/Envios/crear_gasto_extra.html"
@@ -824,7 +824,7 @@ class CrearGastoExtraeView(LoginRequiredMixin,CreateView):
 ####### ENVIOS #######
 
 #Vista que muestra nuestra lista de envios y las opciones correspondientes con estas
-class ListaEnvioView (LoginRequiredMixin,ListView):
+class ListaEnvioView (ListView):
     template_name= 'Controlador/Envios/lista_envios.html'  
     model = Envio
     context_object_name="lista_envios"
@@ -872,7 +872,7 @@ class ListaEnvioView (LoginRequiredMixin,ListView):
 
 
 #Vista para crear envio
-class CrearEnvioView(LoginRequiredMixin,CreateView):
+class CrearEnvioView(CreateView):
     model = Envio
     #fields = ['Nombre',"Inventario",'Gastos_extras','Hay_que_pagar_ida_y_vuelta',"Gasto_total_en_pasajes",'Dinero_Total_obtenido','Ganancia',"notas"]
     template_name= "Controlador/Envios/crear_envio.html"
@@ -1071,7 +1071,7 @@ class CrearEnvioView(LoginRequiredMixin,CreateView):
 
 
 #Vista para ver los detalles de un envio existente
-class DetailEnvioView(LoginRequiredMixin,DetailView):
+class DetailEnvioView(DetailView):
 
     model = Envio
     template_name = 'Controlador/Envios/detail_envio.html'
@@ -1149,7 +1149,7 @@ class DetailEnvioView(LoginRequiredMixin,DetailView):
 
 
 #Vista para editar datos de un envio existente
-class EditarEnvioView (LoginRequiredMixin,FormView):
+class EditarEnvioView (FormView):
     template_name= "Controlador/Envios/editar_envios.html"
     form_class=EnvioForm
 

@@ -21,7 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Apps.Controlador.urls')),
 
-    # Registration...
-    path('accounts/', include('registration.backends.default.urls')),
-    # Registration ..
+
 ]

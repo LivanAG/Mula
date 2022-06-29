@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'registration',
     'django.contrib.admin',
     'django.contrib.messages',
     'django.contrib.staticfiles',
@@ -147,11 +146,6 @@ EMAIL_HOST_PASSWORD="ndguxakhuczxbnvp"
 
 
 #------------------ END Configuracion Email--------------------------------------------------------------------------------------
-
-
-#Django Registration
-
-ACCOUNT_ACTIVATION_DAYS = 7
 
 
 
